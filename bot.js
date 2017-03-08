@@ -14,10 +14,10 @@ const stream = T.stream('statuses/filter', { track: ['rijst recept', 'rijst rece
 let queue = [];
 
 setInterval(() => {
-  const randomNumber = Math.round(Math.random()*15);
+  const randomNumber = Math.round(Math.random()*10);
   console.log(`Random number = ${randomNumber} - Queue length: ${queue.length}`);
 
-  if(queue.length && randomNumber === 10) {
+  if(queue.length && randomNumber === 5) {
     let tweet = queue.shift();
     const url = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
     const rnd = emoji.random({count: 5});
@@ -36,9 +36,14 @@ setInterval(() => {
         console.log(err);
       }
     })
-    
   }
 
+  if(queue.length > 10) {
+    while(queue.length > 10) {
+      console.log('Queue is too long, skip one');
+      queue.shift();
+    }
+  }
 
 }, 60*1000);
 
