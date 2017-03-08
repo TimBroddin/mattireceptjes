@@ -16,13 +16,13 @@ stream.on('tweet', function (tweet) {
     setTimeout(() => {
       const url = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
       const rnd = emoji.random({count: 5});
-      const length = Math.round(Math.random()*5);
+      const length = Math.ceil(Math.random()*5);
       let emojiStr = '';
       for(let i=0;i<length;i++) {
         emojiStr += rnd[i].character;
       }
 
-      const status = `@mattimeurisse ${emojiStr} ${url}`;
+      const status = `Nieuw recept! ${emojiStr} @mattimeurisse  ${url}`;
       console.log(status);
 
       T.post('statuses/update', { status }, function(err, data, response) {
