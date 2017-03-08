@@ -27,6 +27,9 @@ stream.on('tweet', function (tweet) {
 
       T.post('statuses/update', { status }, function(err, data, response) {
         //console.log(data)
+        if(err) {
+          console.log(err);
+        }
       })
     }, 4000);
   }
