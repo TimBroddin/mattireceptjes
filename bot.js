@@ -17,12 +17,12 @@ stream.on('tweet', function (tweet) {
       const url = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
       const rnd = emoji.random({count: 5});
       const length = Math.round(Math.random()*5);
-      let emoji = '';
+      let emojiStr = '';
       for(let i=0;i<length;i++) {
-        emoji += rnd[i].character;
+        emojiStr += rnd[i].character;
       }
 
-      const status = `@mattimeurisse ${emoji} ${url}`;
+      const status = `@mattimeurisse ${emojiStr} ${url}`;
       console.log(status);
 
       T.post('statuses/update', { status }, function(err, data, response) {
