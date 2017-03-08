@@ -22,11 +22,12 @@ stream.on('tweet', function (tweet) {
       for(let i=0;i<length;i++) {
         emoji += rnd[i].character;
       }
-      
+
       const status = `@mattimeurisse ${emoji} ${url}`;
+      console.log(status);
 
       T.post('statuses/update', { status }, function(err, data, response) {
-        console.log(data)
+        //console.log(data)
       })
     }, 4000);
   }
